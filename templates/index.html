@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Student Performance Predictor</h1>
+        <p>Enter the student details below to predict their performance.</p>
+
+        <form id="predictForm">
+            <div class="input-group">
+                <label for="hours">📖 Hours Studied:</label>
+                <input type="number" id="hours" name="Hours Studied" required>
+            </div>
+
+            <div class="input-group">
+                <label for="scores">📊 Previous Scores:</label>
+                <input type="number" id="scores" name="Previous Scores" required>
+            </div>
+
+            <div class="input-group">
+                <label for="activities">🎭 Extracurricular Activities (1 for Yes, 0 for No):</label>
+                <input type="number" id="activities" name="Extracurricular Activities" required>
+            </div>
+
+            <div class="input-group">
+                <label for="sleep">😴 Sleep Hours:</label>
+                <input type="number" id="sleep" name="Sleep Hours" required>
+            </div>
+
+            <div class="input-group">
+                <label for="papers">📜 Sample Papers Practiced:</label>
+                <input type="number" id="papers" name="Sample Question Papers Practiced" required>
+            </div>
+
+            <button type="submit">🔍 Predict Score</button>
+        </form>
+
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('result').innerText = "⚠ Error: " + data.error;
+                } else {
+                    document.getElementById('result').innerText = "📈 Predicted Score: " + data.prediction;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+/* Background with a soft animated gradient */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #00c6ff, #0072ff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background gradient animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism effect */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    width: 50%;
+    margin: 50px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+p {
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+/* Input styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffdd57;
+}
+
+input {
+    padding: 12px;
+    width: 90%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ffdd57;
+    box-shadow: 0 0 10px rgba(255, 221, 87, 0.5);
+}
+
+/* Button with hover effect */
+button {
+    background: linear-gradient(to right, #ff9800, #ff5722);
+    border: none;
+    padding: 12px 25px;
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(to right, #ff5722, #e91e63);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+}
+
+/* Prediction result styling */
+h2 {
+    margin-top: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffdd57;
+}
